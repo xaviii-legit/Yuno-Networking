@@ -22,4 +22,4 @@ This document provides detailed information about the networking module as used 
    ```lua
       local remotePacket = NetworkManager:Get("packetnamehere")
    ```
-   ```lua :Get() ``` is case sensitive. Ensure the packet name matches the one mentioned inside the packet database.
+   ```:Get()``` is case sensitive. Ensure the packet name matches the one mentioned inside the packet database.
