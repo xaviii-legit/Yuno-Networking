@@ -1,34 +1,41 @@
-# Main Module Documentation
+# Network Manager Module
 
-## Overview
-This module provides functionality for managing networking tasks and ensuring efficient communication between services.
+## Roblox-Specific Documentation
 
-## API Reference
-- **getConnection()**: Establish a connection to the network.
-- **sendData(data)**: Send data over the established connection.
-- **receiveData()**: Receive data from the connection.
+### Overview
+This document provides detailed information about the Network Manager module as used specifically in Roblox games.
 
-## Usage Examples
-```javascript
-// Example of establishing a connection and sending data
-const networking = require('./path/to/networking');
-const conn = networking.getConnection();
-networking.sendData('Hello, World!');
+### Features
+- **Remote Event Management**: Easily send and receive events between the server and client.
+- **Connection Handling**: Automatically manage player connections and disconnections.
+
+### Usage
+1. **Initial Setup**:
+   Make sure the Network Manager module is instantiated in your game’s starter or services directory.
+
+2. **Sending Events**:
+   ```lua
+   NetworkManager:FireEvent('EventName', data)
+   ```
+
+3. **Receiving Events**:
+   ```lua
+   NetworkManager.OnEventReceived:Connect(function(eventName, data)
+       -- Handle the event here
+   end)
+   ```
+
+### Best Practices
+- Always disconnect player events when they leave to prevent memory leaks.
+- Use descriptive names for your events to ensure clarity.
+
+### Example
+```lua
+local NetworkManager = require(game.ServerScriptService.NetworkManager)
+
+NetworkManager.OnEventReceived:Connect(function(eventName, data)
+    print('Event:', eventName, 'Data:', data)
+end)
+
+NetworkManager:FireEvent('PlayerConnected', playerName)
 ```
-
-## Configuration
-- **host**: The hostname or IP address of the server.
-- **port**: The port number for the connection.
-- **timeout**: Timeout setting for the connection (in milliseconds).
-
-## Architecture
-This module follows a client-server architecture, where the client establishes a connection to the server and communicates using a predefined protocol.
-
-## Troubleshooting
-- **Issue: Unable to connect to server**: Ensure that the server is running and listening on the correct port.
-- **Issue: Data not received**: Check network connectivity and ensure the sendData method was called correctly.
-
-## Navigation
-- [Module 1](./Module-1.md)
-- [Module 2](./Module-2.md)
-- [Module 3](./Module-3.md)
