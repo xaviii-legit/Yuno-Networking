@@ -1,8 +1,69 @@
+# Network Documentation
+
 ## Installation
 
-# Github Installation
-1. Grab the latest release file for the module!
-2. Inside your Roblox Studio place, insert the module into ReplicatedStorage.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/xaviii-legit/Yuno-Networking.git
+   ```
 
-# Roblox Installation
-*Currently Not Available.*
+2. Navigate into the cloned directory:
+   ```bash
+   cd Yuno-Networking
+   ```
+
+3. Install dependencies (if any):
+   ```bash
+   npm install
+   ```
+
+## API Reference
+
+- **GET /api/v1/resource**  
+  Description: Retrieve a resource.
+  - **Response:** JSON object of resource data.
+
+- **POST /api/v1/resource**  
+  Description: Create a new resource.
+  - **Request body:** JSON object with resource details.
+  - **Response:** Confirmation of resource creation.
+
+## Usage Examples
+
+### Example 1: Retrieving a Resource
+```javascript
+fetch('/api/v1/resource')
+    .then(response => response.json())
+    .then(data => console.log(data));
+```
+
+### Example 2: Creating a Resource
+```javascript
+fetch('/api/v1/resource', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name: 'New Resource' })
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+
+## Configuration
+
+Configuration settings can be found in the `config` directory. Modify the `config.json` file to customize your setup.
+
+## Architecture
+
+The architecture of Yuno-Networking follows the Model-View-Controller (MVC) pattern, allowing for separation of concerns and easier maintenance.
+
+## Troubleshooting
+
+- **Problem:** Unable to connect to the API.
+  - **Solution:** Check if the API server is running and accessible.
+
+- **Problem:** 404 Error when accessing a resource.
+  - **Solution:** Verify the resource ID in the URL.
+
+For further assistance, please refer to the README or contact support.
